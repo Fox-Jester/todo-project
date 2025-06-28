@@ -14,6 +14,7 @@ Mechanics-
     click todo to display in content container,
     creating a new todo as a modal,
 
+    edit project tabs.
 
 Special Mechanics- 
     rightclick menu on todos,

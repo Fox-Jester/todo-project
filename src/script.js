@@ -1,5 +1,6 @@
 
 import "./styles.css"
+import { Modal } from "./components/Modals.js"
 
 class TodoItem{
 
@@ -26,3 +27,5 @@ class Project{
         }
     }
 }
+
+Modal("project");
