@@ -3,7 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todo App</title>
+    <script
+      src="https://kit.fontawesome.com/e186fe6458.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body></body>
+  <body>
+    <div id="page">
+      <div id="control-panel">
+        <div class="tab header">
+          <div class="icon-group">
+            <i class="fa-solid fa-circle-plus icon"></i>
+            <p>Create project</p>
+          </div>
+
+          <i class="fa-solid fa-arrow-right icon"></i>
+        </div>
+        <div class="tab">Upcoming</div>
+
+        <div class="dropdown">
+          <div class="tab">
+            My Projects
+            <i class="fa-solid fa-chevron-right chevron"></i>
+          </div>
+
+          <div class="project-tab tab red">
+            Todo
+            <p>12</p>
+          </div>
+          <div class="project-tab tab orange">Todo</div>
+          <div class="project-tab tab yellow">Todo</div>
+          <div class="project-tab tab green">Todo</div>
+          <div class="project-tab tab blue">Todo</div>
+          <div class="project-tab tab purple">Todo</div>
+          <div class="project-tab tab pink">Todo</div>
+        </div>
+      </div>
+
+      <div id="content-container"></div>
+    </div>
+  </body>
 </html>

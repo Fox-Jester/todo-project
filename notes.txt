@@ -1,0 +1,19 @@
+
+
+todo requirements-
+    title,
+    description,
+    dueDate,
+    priority
+
+ui requirements-
+    default project,
+
+Mechanics-
+    expand projects to see todo names & dueDates.
+    click todo to display in content container,
+    creating a new todo as a modal,
+
+
+Special Mechanics- 
+    rightclick menu on todos,
