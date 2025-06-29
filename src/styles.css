@@ -115,12 +115,19 @@ body{
 }
 
 .chevron{
+    transition: all 0.3s;
+}
+
+#control-panel .chevron{
     position: absolute;
     right: 15px;
     font-size: 1.1rem;
+    
 }
 
-
+.chevron.rotate{
+    transform: rotate(90deg);
+}
 
 
 #content-container{

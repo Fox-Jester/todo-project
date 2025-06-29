@@ -21,7 +21,7 @@
     cursor: auto;
    
     color: hsl(0, 0%, 90%);
-    text-shadow: 2px 2px 3px hsl(0, 0%, 30%);
+    text-shadow: 2px 2px 3px hsl(0, 0%, 15%);
     margin-bottom: 20px;
 }
 
@@ -53,21 +53,23 @@
     display: flex;
     align-items: center;
     position: relative;
+   
     
 }
 
 
 .color-group .chevron{
-    position: relative;
-    right: 0;
+    
+   
     font-size: 1rem;
-    padding-right: 8px;
+    margin-right: 8px;
+   
    
 }
 
 .color-group p{
-    margin: 0;
-    padding: 6px 5px 6px 8px;
+
+    margin: 6px 5px 6px 8px;
     font-size: 1rem;
 }
 
@@ -86,9 +88,15 @@
     grid-template-columns: repeat(2, 35px);
 }
 
-.color-square{
+.color-grid div{
     border: 1px solid black;
     height: 30px;
+
+}
+
+.color-grid div.hidden{
+   display: none;
+
 }
 
 .btn-group{
@@ -113,6 +121,3 @@
     
 }
 
-.create-btn:hover{
-
-}

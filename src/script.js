@@ -1,6 +1,9 @@
 
 import "./styles.css"
-import { Modal } from "./components/Modals.js"
+import Modal from "./components/Modal/Modal.js"
+import Project from "./components/project/Project.js";
+
+
 
 class TodoItem{
 
@@ -13,19 +16,12 @@ class TodoItem{
 }
 
 
-class Project{
 
-    constructor(){
-        this.folder = []
-        this.add = (TodoItem) => {
-            this.folder.push(TodoItem);
-        } 
-        this.remove = (TodoItem) => {
-            if(TodoItem){
-                this.folder.splice((this.folder.indexOf(TodoItem)), 1);
-            }
-        }
-    }
+
+
+function createProject({projectName, color}){
+    const newProject = new Project(projectName, color);
+    newProject.create()
 }
 
-Modal("project");
+Modal.create("project", createProject);
