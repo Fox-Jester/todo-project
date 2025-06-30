@@ -2,6 +2,10 @@
 
 
 export default function clearContent(){
-    const contentContainer = document.querySelector('#content-container');
-    contentContainer.innerHTML = ""
+    
+    const projectList = document.querySelector(".project-list");
+    if(projectList){
+        projectList.remove();
+
+    }
 }

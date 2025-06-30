@@ -10,11 +10,11 @@ ui requirements-
     default project,
 
 Mechanics-
-    expand projects to see todo names & dueDates.
-    click todo to display in content container,
-    creating a new todo as a modal,
+    
+    
+   
 
-    edit project tabs.
+    hover over and click project tabs to edit or delete
 
 Special Mechanics- 
     rightclick menu on todos,

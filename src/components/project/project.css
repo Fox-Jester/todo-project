@@ -1,0 +1,53 @@
+
+.project-list{
+
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    margin-top: 40px;
+    
+ 
+}
+
+.list-header{
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+  
+}
+
+.list-header h2{
+    color: hsl(0, 0%, 95%);
+    text-shadow: 2px 2px 3px hsl(0, 0%, 20%);
+}
+
+.list-header p{
+    color: hsl(0, 0%, 95%);
+    text-shadow: 2px 2px 3px hsl(0, 0%, 20%);
+}
+
+.add-group{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-group .icon{
+    font-size: 2.2rem;
+    color: hsl(0, 0%, 90%);
+    background-color: black;
+    border-radius: 50vw;
+}
+
+
+.add-todo-btn{}
+
+.delete-project-btn{}
+
+.list-body{
+    background-color: lightgray;
+    height: 100%;
+}
+

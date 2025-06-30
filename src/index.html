@@ -11,6 +11,36 @@
   </head>
   <body>
     <div id="page">
+      <dialog id="project-modal" class="modal red">
+        <input
+          id="project-modal-input"
+          type="text"
+          placeholder="Project name"
+          autocomplete="off"
+        />
+        <div class="project-modal-footer">
+          <div class="color-container">
+            <div class="color-group">
+              <p>Color</p>
+              <i class="fa-solid fa-chevron-right chevron"></i>
+            </div>
+            <div class="color-grid">
+              <div class="red"></div>
+              <div class="orange"></div>
+              <div class="yellow"></div>
+              <div class="green"></div>
+              <div class="blue"></div>
+              <div class="purple"></div>
+              <div class="pink"></div>
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button id="project-cancel-btn">Cancel</button>
+            <button id="project-create-btn">Create</button>
+          </div>
+        </div>
+      </dialog>
       <div id="control-panel">
         <div class="tab header">
           <div id="create-project-btn" class="icon-group">
@@ -18,9 +48,22 @@
             <p>Create project</p>
           </div>
 
-          <i class="fa-solid fa-arrow-right icon"></i>
+          <i
+            id="control-panel-close-btn"
+            class="fa-solid fa-arrow-right icon"
+          ></i>
         </div>
-        <div class="tab">Upcoming</div>
+        <div id="inbox-tab" class="tab">Inbox</div>
+        <div id="todo-dropdown" class="dropdown">
+          <div class="tab">
+            Tasks
+            <i class="fa-solid fa-chevron-right chevron"></i>
+          </div>
+          <div id="all-tab" class="tab">All</div>
+          <div id="today-tab" class="tab">Today</div>
+          <div id="upcoming-tab" class="tab">Upcoming</div>
+          <div id="over-due-tab" class="tab">Overdue</div>
+        </div>
 
         <div id="project-dropdown" class="dropdown">
           <div class="tab">
@@ -41,7 +84,12 @@
         </div>
       </div>
 
-      <div id="content-container"></div>
+      <div id="content-container">
+        <i
+          id="control-panel-open-btn"
+          class="fa-solid fa-arrow-left icon hidden"
+        ></i>
+      </div>
     </div>
   </body>
 </html>
