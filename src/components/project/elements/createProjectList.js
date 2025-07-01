@@ -11,14 +11,17 @@ export default function createProjectList(name, color, folder){
   
 
     const addBtn = constructElement("button", "add-todo-btn");
-    addBtn.textContent = "Add Task"
+    addBtn.textContent = "Add Task";
     
-
-    const text = document.createElement("p");
-    text.textContent = "Add Task";
-
     const listHeading = document.createElement("h2");
     listHeading.textContent = name;
+
+    const optionGroup = constructElement("div", "option-group");
+
+    const editBtn = constructElement("button", "edit-btn");
+    editBtn.textContent = "Edit";
+    const deleteBtn = constructElement("button", "delete-btn");
+    deleteBtn.textContent = "Delete";
 
    
     
@@ -26,14 +29,14 @@ export default function createProjectList(name, color, folder){
     const listBody = constructElement("div", "list-body");
 
    
+    optionGroup.append(editBtn, deleteBtn);
 
-
-    listHeader.appendChild(listHeading);
-    listHeader.appendChild(addBtn);
+    listHeader.append(addBtn, listHeading, optionGroup);
+    
     
 
-    list.appendChild(listHeader);
-    list.appendChild(listBody);
+    list.append(listHeader, listBody);
+    
 
 
     return list;
