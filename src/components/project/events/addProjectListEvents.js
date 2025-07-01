@@ -1,5 +1,5 @@
 
-export default function projectEvents(onTodoAdd, onProjectDelete){
+export default function addProjectListEvents(){
 
     const addGroup = document.querySelector(".add-group");
 

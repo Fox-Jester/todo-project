@@ -1,27 +1,30 @@
-import createProjectList from "./createProjectList.js";
-import createProjectTab from "./createProjectTab.js";
-import projectEvents from "./projectEvents.js";
-import "./project.css"
-import Modal from "../Modal/Modal.js";
+import createProjectList from "./elements/createProjectList.js";
+import createProjectTab from "./elements/createProjectTab.js";
+import addProjectListEvents from "./events/addProjectListEvents.js";
 
+import addProjectTabEvents from "./events/addProjectTabEvents.js";
+import "./project.css"
+
+const projectDropdown = document.querySelector("#project-dropdown");
+const contentContainer = document.querySelector("#content-container");
 
 export default class Project{
 
+
+   
     #createList(){
-        createProjectList(this.name, this.color, this.folder);
-        projectEvents(this.#onTodoAdd, this.#onProjectDelete);
+        const list = createProjectList(this.name, this.color, this.folder);
+        contentContainer.appendChild(list);
+        addProjectListEvents(list);
     }
 
-    async #onTodoAdd() {
-    alert("wow");
-    const coolstuff = await Modal.create("todo");
-    console.log(coolstuff);
-}
+    #refreshTaskCounter(tab, counter){
+        const taskCounter = tab.document.querySelector(".task-counter");
+        taskCounter.textContent = `${this.folder.length}`;
+    }
 
-    #onProjectDelete(){}
-
-  
-    
+    #addTaskCounter(){}
+   
     constructor(name, color){
         
         this.name = name;
@@ -39,11 +42,13 @@ export default class Project{
         };
         
         this.create = () => {
-            createProjectTab(this.name, this.color, () => this.#createList());
+            const tab = createProjectTab(this.name, this.color);
+            projectDropdown.appendChild(tab);
+            addProjectTabEvents(tab, () => this.#createList());
         };
     };
     
-       static createProject({projectName, color}){
+       static createProject(projectName, color){
         const newProject = new Project(projectName, color);
         newProject.create()
     }

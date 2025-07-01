@@ -1,9 +1,10 @@
-import createProjectTab from "../project/createProjectTab";
+import Project from "../project/Project";
 
-export default function applyProjectEvents(){
+export default function projectModalInit(){
     const projectModal = document.querySelector("#project-modal");
 
-    const projectCreateBtn =document.querySelector("#project-create-btn");
+    const projectModalForm = document.querySelector("#project-modal-form");
+    
     const projectCancelBtn =document.querySelector("#project-cancel-btn");
 
     const projectModalInput = document.querySelector("#project-modal-input");
@@ -34,16 +35,20 @@ export default function applyProjectEvents(){
     }
     
     function colorGridToggle(){
-        colorGrid.classList.contains("active") ?
-        colorGrid.classList.remove("active") :
-        colorGrid.classList.add("active");
-        
-        rotateChevron()
+        colorGrid.classList.toggle("active");
+        rotateChevron();
     }
     
     function cancelProject(){
-        projectModalInput.value = ""
-        projectModal.close()
+        projectModalInput.value = "";
+        projectModal.close();
+    }
+
+    function submitProjectForm(e){
+        e.preventDefault();
+        Project.createProject(projectModalInput.value, color);
+        projectModalInput.value = "";
+        projectModal.close();
     }
 
     
@@ -56,22 +61,19 @@ export default function applyProjectEvents(){
         }
     
         square.addEventListener("click", () => {
-            projectModal.classList.remove(projectModal.classList[1]);
-            color = square.classList[0]
-            projectModal.classList.add(color);
+            color = square.classList[0];
+            projectModal.classList.replace(projectModal.classList[1], color);
             hideSquareCopy()
         
     })});
 
    
 
+
     projectCancelBtn.addEventListener("click", () => cancelProject())
 
-    projectCreateBtn.addEventListener("click", () => {
-        createProjectTab(projectModalInput.value, color);
-        projectModalInput.value = "";
-        projectModal.close();
-    })
+    projectModalForm.addEventListener("submit", (e) => submitProjectForm(e))
+
 
 
 }
