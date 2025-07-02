@@ -1,11 +1,12 @@
+import Modal from "./components/Modal/Modal";
 
 
 
 export default function applyPageListeners(){
 
-    const projectModal = document.querySelector("#project-modal")
+   
 
-    const controlPanel = document.querySelector("#control-panel");
+  
 
     const createProjectBtn = document.querySelector("#create-project-btn");
     
@@ -14,14 +15,11 @@ export default function applyPageListeners(){
 
 
 
-    createProjectBtn.addEventListener("click", () => showProjectModal())
+    createProjectBtn.addEventListener("click", () => Modal.projectModal())
 
 
 
 
-    function showProjectModal(){
-        projectModal.showModal()
-    }
 
 
 

@@ -1,12 +1,22 @@
 
-export default function addProjectListEvents(){
 
-    const addGroup = document.querySelector(".add-group");
-
-    const addTodoBtn =  document.querySelector(".add-todo-btn");
-
-    const deleteProjectBtn = document.querySelector(".delete-project-btn");
+export default function addProjectListEvents(list, onDelete, onEdit){
 
 
-    addTodoBtn.addEventListener("click", () => onTodoAdd())
+
+
+
+    const deleteBtn = list.querySelector(".delete-btn");
+    const editBtn = list.querySelector(".edit-btn");
+
+    deleteBtn.addEventListener("click", () => {
+        if(confirm("are you sure you want to delete this project?")){
+              onDelete()
+        }
+      
+    });
+
+    editBtn.addEventListener("click", () => onEdit())
+
+   
 }

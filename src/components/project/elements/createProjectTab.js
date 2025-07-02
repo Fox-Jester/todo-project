@@ -1,4 +1,5 @@
-import constructElement from "../../constructElement.js";
+import constructElement from "../../constructElement";
+
 
 
 export default function createProjectTab(name, color){
