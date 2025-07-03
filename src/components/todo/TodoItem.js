@@ -1,3 +1,4 @@
+import createTodoModal from "../Modal/elements/createTodoModal"
 
 
 
@@ -11,5 +12,7 @@ export default class TodoItem{
         this.priority = priority
     }
 
-    
+    static createTodo(){
+        createTodoModal()
+    }
 }

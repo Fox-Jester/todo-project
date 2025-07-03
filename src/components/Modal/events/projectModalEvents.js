@@ -9,7 +9,7 @@ export default function projectModalEvents(modal, onEdit){
 
        
     
-        const modalForm = modal.querySelector(".project-modal-form");
+        const modalForm = modal.querySelector(".project-form");
         
         const cancelBtn = modal.querySelector(".cancel-btn");
     
@@ -60,8 +60,8 @@ export default function projectModalEvents(modal, onEdit){
             else{
                 Project.createProject(modalInput.value, color);
             }
-            modalInput.value = "";
             modal.close();
+            modalInput.value = "";
             modal.remove()
         }
     

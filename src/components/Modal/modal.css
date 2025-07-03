@@ -1,0 +1,185 @@
+
+
+.modal{
+
+    position: absolute;
+    margin-top: 200px;
+    width: 400px;
+    border-radius: 20px;
+    border: none;
+
+    box-shadow: 3px 3px 5px hsl(0, 0%, 25%);
+
+}
+
+.project-modal-input{
+    padding: 8px 12px;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.8rem;
+    cursor: auto;
+   
+    color: hsl(0, 0%, 90%);
+    text-shadow: 2px 2px 3px hsl(0, 0%, 15%);
+    margin-bottom: 20px;
+}
+
+.project-modal-input::placeholder{
+    color: hsl(0, 0%, 80%);
+}
+
+.modal-footer{
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.color-container{
+    cursor: pointer;
+    position: relative;
+
+
+}
+.color-container:has(.color-grid.active) .color-group{
+    box-shadow: none;
+}
+
+
+.color-group{
+    background-color: hsl(0, 0%, 90%);
+    box-shadow: 2px 2px 3px hsl(0, 0%, 25%);
+    display: flex;
+    align-items: center;
+    position: relative;
+   
+    
+}
+
+
+.color-group .chevron{
+    
+   
+    font-size: 1rem;
+    margin-right: 8px;
+   
+   
+}
+
+.color-group p{
+
+    margin: 6px 5px 6px 8px;
+    font-size: 1rem;
+}
+
+
+
+.color-grid{
+    display: none;
+    
+   
+   
+}
+
+.color-grid.active{
+    display: grid;
+    position: fixed;
+    
+    grid-template-columns: repeat(2, 35px);
+}
+
+.color-grid div{
+    border: 1px solid black;
+    height: 20px;
+
+}
+
+.color-grid div.hidden{
+   display: none;
+
+}
+
+.btn-group{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-group button{
+    border-radius: 10px;
+    padding: 8px 12px;
+    background-color: hsl(0, 0%, 90%);
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px hsl(0, 0%, 25%);
+    border: none;
+}
+
+.btn-group button:hover{
+    background-color: hsl(0, 0%, 80%);
+    box-shadow: 0px 0px 3px lightgray;
+    
+}
+
+/* TODO MODAL */
+
+.modal:has(.todo-form){
+    background-color: hsl(0, 0%, 30%);
+}
+
+.todo-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-shadow: 1px 1px 2px hsl(0, 0%, 15%);
+    color: hsl(0, 0%, 95%);
+}
+
+.todo-modal-input{
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: hsl(0, 0%, 95%);
+    outline: none;
+    border: none;
+}
+
+.todo-modal-input::placeholder{
+    color: hsl(0, 0%, 85%);
+}
+
+.description-area{
+    font-size: 1.1rem;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    resize: none;
+    color: hsl(0, 0%, 95%);
+}
+
+.description-area::placeholder{
+    color: hsl(0, 0%, 85%);
+}
+
+.optional-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+
+.optinal-group{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+
+.optinal-group select, .optinal-group input{
+    font-size: 1rem;
+    padding: 4px 6px;
+    background-color: hsl(0, 0%, 95%);
+}

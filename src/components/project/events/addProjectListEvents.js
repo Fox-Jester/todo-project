@@ -1,3 +1,4 @@
+import Modal from "../../Modal/Modal";
 
 
 export default function addProjectListEvents(list, onDelete, onEdit){
@@ -5,7 +6,7 @@ export default function addProjectListEvents(list, onDelete, onEdit){
 
 
 
-
+    const createBtn = list.querySelector(".add-todo-btn")
     const deleteBtn = list.querySelector(".delete-btn");
     const editBtn = list.querySelector(".edit-btn");
 
@@ -18,5 +19,5 @@ export default function addProjectListEvents(list, onDelete, onEdit){
 
     editBtn.addEventListener("click", () => onEdit())
 
-   
+    createBtn.addEventListener("click", () => Modal.todoModal());
 }

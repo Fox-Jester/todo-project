@@ -6,7 +6,7 @@ export default function createProjectModal(projectName = "", color = "red"){
 
     const projectModal = constructElement("dialog", "modal", color);
     
-    const projectModalForm = constructElement("form", "project-modal-form");
+    const modalForm = constructElement("form", "project-form");
 
     
     const projectModalInput = constructElement("input", "project-modal-input");
@@ -16,7 +16,7 @@ export default function createProjectModal(projectName = "", color = "red"){
     projectModalInput.autocomplete = "off";
     projectModalInput.required = true;
 
-    const projectModalFooter = constructElement("div", "project-modal-footer");
+    const modalFooter = constructElement("div", "modal-footer");
     const colorContainer = constructElement("div", "color-container");
 
     const colorGroup = constructElement("div", "color-group");
@@ -57,10 +57,10 @@ export default function createProjectModal(projectName = "", color = "red"){
     colorContainer.append(colorGroup, createColorGrid());
     btnGroup.append(cancelBtn, createBtn);
 
-    projectModalFooter.append(colorContainer, btnGroup);
+    modalFooter.append(colorContainer, btnGroup);
 
-    projectModalForm.append(projectModalInput, projectModalFooter);
-    projectModal.appendChild(projectModalForm);
+    modalForm.append(projectModalInput, modalFooter);
+    projectModal.appendChild(modalForm);
 
     return projectModal;
 }
