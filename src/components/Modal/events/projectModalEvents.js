@@ -1,4 +1,4 @@
-import Project from "../../Project/Project";
+import Project from "../../project/project.js";
 
 
 
