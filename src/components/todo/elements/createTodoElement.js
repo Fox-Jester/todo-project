@@ -10,7 +10,7 @@ export default function createTodoElement(title, description, date, time, priori
 
     //CheckToggle
 
-    const checkToggle = constructElement("i", "fa-circle", "checkToggle");
+    const checkToggle = constructElement("i", "fa-circle", "fa-regular", "checkToggle");
 
     //TodoContent 
     const todoContent = constructElement("div", "todo-content");

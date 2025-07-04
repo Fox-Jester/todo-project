@@ -15,7 +15,7 @@ export default function applyPageListeners(){
 
 
 
-    createProjectBtn.addEventListener("click", () => Modal.projectModal())
+    createProjectBtn.addEventListener("click", () => Modal.showProjectModal())
 
 
 

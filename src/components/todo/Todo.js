@@ -1,12 +1,12 @@
 import createTodoElement from "./elements/createTodoElement";
 
-
+import "./todo.css"
 
 
 
 export default class Todo{
 
-    constructor({title, description, date, time, priority}){
+    constructor(title, description, date, time, priority){
         this.title = title,
         this.description = description,
         this.date = date,
@@ -32,9 +32,5 @@ export default class Todo{
         }
     }
 
-    static createTodo(title, description, date, time,  priority){
-        const todo = new Todo(title, description, date, time, priority);
-        todo
-        todo.create()
-    }
+    
 }

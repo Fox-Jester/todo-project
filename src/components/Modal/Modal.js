@@ -5,28 +5,30 @@ import todoModalEvents from "./events/todoModalEvemts";
 import "./modal.css"
 
 const contentContainer = document.querySelector("#content-container")
-export default class Modal {
+const modal = {
 
 
     
-    static projectModal(name, color, onEdit){
-      
+    showProjectModal: (name, color, onProjectEdit) => {
         const modal = createProjectModal(name, color);
         contentContainer.appendChild(modal);
         modal.showModal()
-        projectModalEvents(modal, onEdit);
-    }
+        projectModalEvents(modal, onProjectEdit);
+    },
+
+  
 
 
-    static todoModal(){
+    showTodoModal: (onSubmit) =>{
 
         const modal = createTodoModal();
         contentContainer.appendChild(modal);
         modal.showModal()
-        todoModalEvents(modal);
+        todoModalEvents(modal, onSubmit);
 
         
     }
 
    
 }
+export default modal

@@ -1,4 +1,4 @@
-import Modal from "../../Modal/Modal";
+
 
 
 export default function addProjectListEvents(list, onDelete, onEdit, onAdd){

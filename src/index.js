@@ -18,7 +18,7 @@ const App = {
 
     checkProjects(){
         const projectTabs = document.querySelectorAll(".project-tab");
-        console.log(projectTabs);
+     
         if(projectTabs.length === 0){
             Project.createProject("Default", "blue")
         }

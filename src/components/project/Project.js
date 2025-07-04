@@ -5,7 +5,7 @@ import addProjectListEvents from "./events/addProjectListEvents.js";
 import clearContent from "../../clearContent.js";
 import addProjectTabEvents from "./events/addProjectTabEvents.js";
 import "./project.css"
-import Modal from "../Modal/Modal.js";
+import modal from "../modal/modal.js";
 
 const projectDropdown = document.querySelector("#project-dropdown");
 const contentContainer = document.querySelector("#content-container");
@@ -18,17 +18,20 @@ export default class Project{
         const list = createProjectList(this.name, this.color, this.folder);
         contentContainer.appendChild(list);
         addProjectListEvents(list, () => this.#deleteProject(), () => this.#createEditModal(), () => this.#createTodoModal());
+
+        this.folder.forEach(todo => todo.create())
     };
 
     //Creates a modal to add a todo
     #createTodoModal(){
-        Modal.todoModal(this.#addTodoToFolder.bind(this))
+        modal.showTodoModal(this.#addTodoToFolder.bind(this))
     };
 
     //Add's todo to this Project's folder
     #addTodoToFolder(todo){
         this.folder.push(todo);
         console.log(this.folder);
+        todo.create();
     };
 
     //Deletes this Project

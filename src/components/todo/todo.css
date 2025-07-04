@@ -1,0 +1,33 @@
+
+
+
+.todo{
+    display: flex;
+    
+}
+
+.checkToggle{
+
+}
+
+.todo-content{}
+
+.todo-title{}
+
+.todo-description{}
+
+.time-group{}
+
+.priority-tag{}
+
+.priority-low{
+    background-color: rgb(21, 191, 21);
+}
+
+.priority-med{
+    background-color: rgb(243, 243, 33);
+}
+
+.priority-high{
+    background-color: rgb(196, 0, 0);
+}
