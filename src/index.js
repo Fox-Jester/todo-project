@@ -1,7 +1,7 @@
 
 import applyPageEvents from "./applyPageEvents";
 
-import Project from "./components/project/Project.js";
+import Project from "./components/project/project.js";
 import "./styles.css";
 
 
