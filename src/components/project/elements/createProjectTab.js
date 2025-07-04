@@ -17,7 +17,7 @@ export default function createProjectTab(name, color){
    
    
 
-    taskCounter.textContent = "23"
+    taskCounter.textContent = ""
 
     
 

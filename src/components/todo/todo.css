@@ -3,29 +3,62 @@
 
 .todo{
     display: flex;
-    
+   
+    padding: 16px 10px;
+    gap: 10px;
+    background-color: hsl(0, 0%, 20%);
+    border-bottom: 1px solid hsl(0, 0%, 95%);
+    color: hsl(0, 0%, 95%);
+    position: relative;
+    width: 60%;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.checkToggle{
 
+
+.check-toggle{
+    font-size: 1.5rem;
+    color: hsl(0, 0%, 85%);
+    cursor: pointer;
 }
 
 .todo-content{}
 
-.todo-title{}
+.todo-title{
+    margin: 0;
+    font-size: 1.2rem;
+}
 
 .todo-description{}
 
-.time-group{}
+.time-group{
+    display: flex;
+    gap: 10px;
+}
 
-.priority-tag{}
+.time-group p {
+    margin: 0;
+}
+
+.priority-tag{
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    border-radius: 0 10px 10px 0;
+    border: 2px solid hsl(0, 0%, 20%);
+    box-sizing: border-box;
+}
 
 .priority-low{
-    background-color: rgb(21, 191, 21);
+    background-color: rgb(85, 242, 85);
 }
 
 .priority-med{
-    background-color: rgb(243, 243, 33);
+    background-color: rgb(228, 228, 64);
+
 }
 
 .priority-high{

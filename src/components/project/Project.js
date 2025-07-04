@@ -15,24 +15,51 @@ export default class Project{
 
     //Creates a list repersenting this project
     #createList(){
-        const list = createProjectList(this.name, this.color, this.folder);
+        const list = createProjectList(this.name, this.color, this.todos);
         contentContainer.appendChild(list);
         addProjectListEvents(list, () => this.#deleteProject(), () => this.#createEditModal(), () => this.#createTodoModal());
 
-        this.folder.forEach(todo => todo.create())
+        this.todos.forEach(todo => todo.create(this.#deleteTodo.bind(this), this.#editTodoModal.bind(this))
+    )
     };
 
     //Creates a modal to add a todo
     #createTodoModal(){
-        modal.showTodoModal(this.#addTodoToFolder.bind(this))
+        modal.showTodoModal(this.#addToTodos.bind(this))
     };
 
-    //Add's todo to this Project's folder
-    #addTodoToFolder(todo){
-        this.folder.push(todo);
-        console.log(this.folder);
-        todo.create();
+    //Add's todo to this Project's todos
+    #addToTodos(todo){
+        this.todos.push(todo);
+        
+        todo.create(this.#deleteTodo.bind(this), this.#editTodoModal.bind(this));
+        this.#refreshTaskCounter();
+        
     };
+
+    #editTodoModal(todo) {
+    modal.showTodoModal((updatedTodo) => this.#updateTodo(todo, updatedTodo), todo);
+}
+
+    #updateTodo(oldTodo, newTodo){
+         oldTodo.title = newTodo.title;
+        oldTodo.description = newTodo.description;
+        oldTodo.date = newTodo.date;
+        oldTodo.time = newTodo.time;
+        oldTodo.priority = newTodo.priority;
+
+        this.#refreshTodos();
+    }
+
+    #deleteTodo(todo){
+        setTimeout(() => {
+            this.todos.splice(this.todos.indexOf(todo) ,1)
+            this.#refreshTodos();
+            this.#refreshTaskCounter();
+            
+        }, 500);
+
+    }
 
     //Deletes this Project
     #deleteProject(){
@@ -42,11 +69,11 @@ export default class Project{
 
     //Creates a modal to edit this Project
     #createEditModal(){
-        Modal.projectModal(this.name, this.color, this.#edit.bind(this));
+        modal.showProjectModal(this.name, this.color, this.#editProject.bind(this));
     }
 
     //Callback sent to a modal to edit this project
-    #edit(name, color){
+    #editProject(name, color){
         this.name = name;
         this.color = color;
         this.#refreshProject()
@@ -62,27 +89,32 @@ export default class Project{
         this.#createList()
     }
 
-    #refreshTaskCounter(tab, counter){
-        const taskCounter = tab.document.querySelector(".task-counter");
-        taskCounter.textContent = `${this.folder.length}`;
+    #refreshTodos(){
+        clearContent();
+        this.#createList()
+    }
+
+    #refreshTaskCounter(){
+        const taskCounter = this.tab.querySelector(".task-counter");
+        taskCounter.textContent = `${this.todos.length}`;
     };
 
-    #addTaskCounter(){};
+  
    
     constructor(name, color){
         
         this.name = name;
         this.color = color;
-        this.folder = [];
+        this.todos = [];
         this.tab = ""
         
         this.add = (TodoItem) => {
-            this.folder.push(TodoItem);
+            this.todos.push(TodoItem);
         } ;
         
         this.remove = (TodoItem) => {
             if(TodoItem){
-                this.folder.splice((this.folder.indexOf(TodoItem)), 1);
+                this.todos.splice((this.todos.indexOf(TodoItem)), 1);
             }
         };
         

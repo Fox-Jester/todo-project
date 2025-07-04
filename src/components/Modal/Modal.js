@@ -19,12 +19,13 @@ const modal = {
   
 
 
-    showTodoModal: (onSubmit) =>{
+    showTodoModal: (onSubmit, todo) =>{
 
-        const modal = createTodoModal();
+        const modal = createTodoModal(todo);
+        todoModalEvents(modal, onSubmit, todo);
+       
         contentContainer.appendChild(modal);
         modal.showModal()
-        todoModalEvents(modal, onSubmit);
 
         
     }

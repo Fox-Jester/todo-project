@@ -2,7 +2,9 @@
 
 export default function constructElement(elementType, ...className){
     const element = document.createElement(elementType);
-    className.forEach(className => element.classList.add(className));
+    className.forEach(className => {
+        className === "" ? null : element.classList.add(className);
+    });
 
     return element;
 }

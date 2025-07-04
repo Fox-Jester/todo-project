@@ -2,7 +2,7 @@ import Todo from "../../todo/todo";
 
 
 
-export default function todoModalEvents(modal, onSubmit, edit){
+export default function todoModalEvents(modal, onSubmit, existingTodo){
     
     
     const modalForm = modal.querySelector(".todo-form");
@@ -19,6 +19,8 @@ export default function todoModalEvents(modal, onSubmit, edit){
 
     const cancelBtn = modal.querySelector(".cancel-btn");
 
+   
+
 
     function cancelTask(){
    
@@ -29,24 +31,24 @@ export default function todoModalEvents(modal, onSubmit, edit){
 
    function submitTodoForm(e){
         e.preventDefault();
-        if(edit){
+       
+       
+           
 
-        }
-        else{
-            console.log("MainInput:", modalInput.value, "Description:", descriptionArea.value,
-                "Date:", dateInput.value, "Time:", timeInput.value, "Prority:", prioritySelect.value
-            )
+        const newTodo = new Todo(
+            modalInput.value,
+            descriptionArea.value,
+            dateInput.value,
+            timeInput.value,
+            prioritySelect.value
+        );
 
-            const newTodo = new Todo(
-                modalInput.value,
-                descriptionArea.value,
-                dateInput.value,
-                timeInput.value,
-                prioritySelect.value
-            );
+        
+       
 
-            onSubmit(newTodo);
-        }
+        onSubmit(newTodo);
+        
+        
 
         modal.close();
         modalInput.value = "";
