@@ -1,7 +1,7 @@
 import Modal from "../../Modal/Modal";
 
 
-export default function addProjectListEvents(list, onDelete, onEdit){
+export default function addProjectListEvents(list, onDelete, onEdit, onAdd){
 
 
 
@@ -19,5 +19,5 @@ export default function addProjectListEvents(list, onDelete, onEdit){
 
     editBtn.addEventListener("click", () => onEdit())
 
-    createBtn.addEventListener("click", () => Modal.todoModal());
+    createBtn.addEventListener("click", () => onAdd());
 }

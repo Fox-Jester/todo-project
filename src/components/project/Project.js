@@ -13,29 +13,43 @@ const contentContainer = document.querySelector("#content-container");
 export default class Project{
 
 
-   
+    //Creates a list repersenting this project
     #createList(){
         const list = createProjectList(this.name, this.color, this.folder);
         contentContainer.appendChild(list);
-        addProjectListEvents(list, () => this.#deleteProject(), () => this.#createEditModal());
+        addProjectListEvents(list, () => this.#deleteProject(), () => this.#createEditModal(), () => this.#createTodoModal());
     };
 
+    //Creates a modal to add a todo
+    #createTodoModal(){
+        Modal.todoModal(this.#addTodoToFolder.bind(this))
+    };
+
+    //Add's todo to this Project's folder
+    #addTodoToFolder(todo){
+        this.folder.push(todo);
+        console.log(this.folder);
+    };
+
+    //Deletes this Project
     #deleteProject(){
         clearContent()
         this.tab.remove()
     };
 
+    //Creates a modal to edit this Project
     #createEditModal(){
         Modal.projectModal(this.name, this.color, this.#edit.bind(this));
     }
 
+    //Callback sent to a modal to edit this project
     #edit(name, color){
-   
         this.name = name;
         this.color = color;
         this.#refreshProject()
     }
 
+    //refreashes this project when edited
     #refreshProject(){
         clearContent()
         this.tab.classList.replace(this.tab.classList[2], this.color);
