@@ -33,8 +33,7 @@ export default class Project{
     };
     //Visually refreshes the project when a todo is added or removed.
     refreshTodos(){
-        clearContent();
-        this.#createList();
+        this.#renderList();
         this.#refreshTaskCounter();
     }
     
@@ -59,17 +58,18 @@ export default class Project{
         this.tab.classList.replace(this.tab.classList[2], this.color);
         const tabName = this.tab.querySelector(".project-tab-name");
         tabName.textContent = this.name;
-        this.#createList()
+        this.#renderList()
     }
     
 
     //Creates a list repersenting this project
-    #createList(){
+    #renderList(){
+        clearContent();
         const list = createProjectList(this.name, this.color, this.todos);
         contentContainer.appendChild(list);
-        addProjectListEvents(list, () => this.#deleteProject(), () => this.#editProjectModal());
+        addProjectListEvents(list, () => this.#deleteProject(), () => this.#editProjectModal(), this);
 
-        this.todos.forEach(todo => todo.create())
+        this.todos.forEach(todo => todo.render())
     };
     
     
@@ -81,18 +81,14 @@ export default class Project{
         this.tab = ""
         
         
-        this.create = () => {
+        this.render = () => {
             const tab = createProjectTab(this.name, this.color);
             projectDropdown.appendChild(tab);
             this.tab = tab;
-            addProjectTabEvents(tab, () => this.#createList());
+            addProjectTabEvents(tab, () => this.#renderList());
+            this.#renderList()
         };
     };
-    
-    static createProject(projectName, color){
-        const newProject = new Project(projectName, color);
-        newProject.create()
-    }
     
     static showProjectModal(){
         const modal = createProjectModal();

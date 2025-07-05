@@ -1,7 +1,8 @@
+import Todo from "../../Todo/Todo";
 
 
 
-export default function addProjectListEvents(list, onDelete, onEdit){
+export default function addProjectListEvents(list, onDelete, onEdit, project){
 
 
 
@@ -11,7 +12,7 @@ export default function addProjectListEvents(list, onDelete, onEdit){
     const editBtn = list.querySelector(".edit-btn");
 
     function onAddTask(){
-        
+        Todo.showTodoModal(project);
     }
 
     deleteBtn.addEventListener("click", () => {
@@ -23,5 +24,5 @@ export default function addProjectListEvents(list, onDelete, onEdit){
 
     editBtn.addEventListener("click", () => onEdit())
 
-    createBtn.addEventListener("click", () => onAdd());
+    createBtn.addEventListener("click", () => onAddTask());
 }

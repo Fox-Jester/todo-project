@@ -20,7 +20,8 @@ const App = {
         const projectTabs = document.querySelectorAll(".project-tab");
      
         if(projectTabs.length === 0){
-            Project.createProject("Default", "blue")
+            const project = new Project("Default", "blue")
+            project.render()
         }
     },
 

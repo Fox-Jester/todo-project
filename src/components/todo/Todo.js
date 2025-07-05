@@ -1,8 +1,11 @@
 import createTodoElement from "./elements/createTodoElement";
+import createTodoModal from "./elements/createTodoModal.js"
 import addTodoEvents from "./events/addTodoEvents";
+import todoModalEvents from "./events/todoModalEvemts.js"
 
 import "./todo.css"
 
+const contentContainer = document.querySelector("#content-container");
 
 
 export default class Todo{
@@ -17,34 +20,21 @@ export default class Todo{
     }, 500);
     }
     
-    #editTodo(){
+ 
+    //Callback sent to a modal to edit this todo
+    #onTodoEdit(newTodo){
+        Object.assign(this, newTodo); 
+        this.project.refreshTodos();  
     }
-    #updateTodo(oldTodo, newTodo){
-        oldTodo.title = newTodo.title;
-        oldTodo.description = newTodo.description;
-        oldTodo.date = newTodo.date;
-        oldTodo.time = newTodo.time;
-        oldTodo.priority = newTodo.priority;
-        
-        this.refreshTodos();
-        
-    }
-
-        //Add's todo to this Project's todos
-    #addToTodos(todo){
-        this.todos.push(todo);
-        
-        todo.create(this.#deleteTodo.bind(this), this.#editTodoModal.bind(this));
-        this.project.refreshTaskCounter();
-        
+   
+    //Creates a modal to edit this todo
+    #editTodoModal(){
+        const modal = createTodoModal(this);
+        contentContainer.appendChild(modal);
+        modal.showModal()
+        todoModalEvents(modal, this.project ,(newTodo) => this.#onTodoEdit(newTodo));
     };
 
-    
-    #editTodoModal(todo) {
-        modal.showTodoModal((updatedTodo) => this.#updateTodo(todo, updatedTodo), todo);
-    }
-    
-    
     constructor(title, description, date, time, priority, project){
         this.title = title,
         this.description = description,
@@ -52,9 +42,8 @@ export default class Todo{
         this.time = time,
         this.priority = priority,
         this.project = project
-        
-        this.render = () => {
-            
+
+        this.render = function(){
             const todoElement = createTodoElement(
                 this.title,
                 this.description,
@@ -62,17 +51,26 @@ export default class Todo{
                 this.time,
                 this.priority,      
             );
-            addTodoEvents(todoElement, () => deleteTodo(this), () => editTodo(this));
-            
+            addTodoEvents(todoElement, () => this.#deleteTodo(), () => this.#editTodoModal());
+    
             const listBody = document.querySelector(".project-list .list-body");
             listBody.appendChild(todoElement);
-            
-            
+
         }
+
+        this.init = function(){
+            this.project.todos.push(this);
+            this.project.refreshTodos();
+        }
+        
+        
     }
     
     //Creates a modal to add a todo
-    static showTodoModal(){
+    static showTodoModal(project){
         const modal = createTodoModal()
+        contentContainer.appendChild(modal);
+        modal.showModal()
+        todoModalEvents(modal, project)
     };
 }

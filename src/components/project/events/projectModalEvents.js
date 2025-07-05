@@ -58,7 +58,8 @@ export default function projectModalEvents(modal, editProject){
                 editProject(modalInput.value, color);
             }
             else{
-                Project.createProject(modalInput.value, color);
+                const newProject = new Project(modalInput.value, color);
+                newProject.render()
             }
             modal.close();
             modalInput.value = "";

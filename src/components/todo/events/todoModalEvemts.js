@@ -1,8 +1,8 @@
-import Todo from "../todo";
+import Todo from "../Todo";
 
 
 
-export default function todoModalEvents(modal, onSubmit, existingTodo){
+export default function todoModalEvents(modal, project, editTodo){
     
     
     const modalForm = modal.querySelector(".todo-form");
@@ -32,27 +32,25 @@ export default function todoModalEvents(modal, onSubmit, existingTodo){
    function submitTodoForm(e){
         e.preventDefault();
        
-       
-           
+    const newTodo = new Todo(
+        modalInput.value,
+        descriptionArea.value,
+        dateInput.value,
+        timeInput.value,
+        prioritySelect.value,
+        project
+    );
 
-        const newTodo = new Todo(
-            modalInput.value,
-            descriptionArea.value,
-            dateInput.value,
-            timeInput.value,
-            prioritySelect.value
-        );
-
-        
-       
-
-        onSubmit(newTodo);
-        
-        
-
-        modal.close();
-        modalInput.value = "";
-        modal.remove()
+    if(editTodo){
+        editTodo(newTodo);
+    }
+    else{
+        newTodo.init()
+    }
+    
+    modal.close();
+    modalInput.value = "";
+    modal.remove()
    }
 
     modalForm.addEventListener("submit", (e) => submitTodoForm(e))
