@@ -3,7 +3,7 @@ import Project from "../../project/project.js";
 
 
 
-export default function projectModalEvents(modal, onEdit){
+export default function projectModalEvents(modal, editProject){
 
     
 
@@ -54,8 +54,8 @@ export default function projectModalEvents(modal, onEdit){
     
         function submitProjectForm(e){
             e.preventDefault();
-            if(onEdit){
-                onEdit(modalInput.value, color)
+            if(editProject){
+                editProject(modalInput.value, color);
             }
             else{
                 Project.createProject(modalInput.value, color);

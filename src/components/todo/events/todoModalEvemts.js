@@ -1,4 +1,4 @@
-import Todo from "../../todo/todo";
+import Todo from "../todo";
 
 
 

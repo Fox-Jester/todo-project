@@ -1,4 +1,5 @@
-import modal from "./components/modal/modal";
+
+import Project from "./components/project/project";
 
 
 
@@ -16,7 +17,7 @@ export default function applyPageListeners(){
 
 
 
-    createProjectBtn.addEventListener("click", () => modal.showProjectModal())
+    createProjectBtn.addEventListener("click", () => Project.showProjectModal())
 
 
 

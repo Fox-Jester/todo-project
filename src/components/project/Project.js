@@ -5,7 +5,10 @@ import addProjectListEvents from "./events/addProjectListEvents.js";
 import clearContent from "../../clearContent.js";
 import addProjectTabEvents from "./events/addProjectTabEvents.js";
 import "./project.css"
-import modal from "../modal/modal.js";
+
+import createProjectModal from "./elements/createProjectModal.js";
+import projectModalEvents from "./events/projectModalEvents.js";
+
 
 const projectDropdown = document.querySelector("#project-dropdown");
 const contentContainer = document.querySelector("#content-container");
@@ -13,94 +16,63 @@ const contentContainer = document.querySelector("#content-container");
 export default class Project{
 
 
-    //Creates a list repersenting this project
-    #createList(){
-        const list = createProjectList(this.name, this.color, this.todos);
-        contentContainer.appendChild(list);
-        addProjectListEvents(list, () => this.#deleteProject(), () => this.#createEditModal(), () => this.#createTodoModal());
-
-        this.todos.forEach(todo => todo.create(this.#deleteTodo.bind(this), this.#editTodoModal.bind(this))
-    )
-    };
-
-    //Creates a modal to add a todo
-    #createTodoModal(){
-        modal.showTodoModal(this.#addToTodos.bind(this))
-    };
-
-    //Add's todo to this Project's todos
-    #addToTodos(todo){
-        this.todos.push(todo);
-        
-        todo.create(this.#deleteTodo.bind(this), this.#editTodoModal.bind(this));
-        this.#refreshTaskCounter();
-        
-    };
-
-    #editTodoModal(todo) {
-    modal.showTodoModal((updatedTodo) => this.#updateTodo(todo, updatedTodo), todo);
-}
-
-    #updateTodo(oldTodo, newTodo){
-         oldTodo.title = newTodo.title;
-        oldTodo.description = newTodo.description;
-        oldTodo.date = newTodo.date;
-        oldTodo.time = newTodo.time;
-        oldTodo.priority = newTodo.priority;
-
-        this.#refreshTodos();
-    }
-
-    #deleteTodo(todo){
-        setTimeout(() => {
-            this.todos.splice(this.todos.indexOf(todo) ,1)
-            this.#refreshTodos();
-            this.#refreshTaskCounter();
-            
-        }, 500);
-
-    }
-
+    
+    
     //Deletes this Project
     #deleteProject(){
         clearContent()
         this.tab.remove()
     };
-
-    //Creates a modal to edit this Project
-    #createEditModal(){
-        modal.showProjectModal(this.name, this.color, this.#editProject.bind(this));
+    
+    
+    
+    //Refreshes taskcounter when a todo is added or deleted
+    #refreshTaskCounter(){
+        const taskCounter = this.tab.querySelector(".task-counter");
+        taskCounter.textContent = `${this.todos.length}`;
+    };
+    //Visually refreshes the project when a todo is added or removed.
+    refreshTodos(){
+        clearContent();
+        this.#createList();
+        this.#refreshTaskCounter();
     }
-
+    
+    
+    //Creates a modal to edit this project
+    #editProjectModal(){
+        const modal = createProjectModal(this.name, this.color);
+        contentContainer.appendChild(modal);
+        modal.showModal()
+        projectModalEvents(modal, (name, color) => this.#onProjectEdit(name, color));
+    };
+    
     //Callback sent to a modal to edit this project
-    #editProject(name, color){
+    #onProjectEdit(name, color){
         this.name = name;
         this.color = color;
         this.#refreshProject()
     }
-
-    //refreashes this project when edited
+    //Refreashes this project when edited
     #refreshProject(){
         clearContent()
         this.tab.classList.replace(this.tab.classList[2], this.color);
         const tabName = this.tab.querySelector(".project-tab-name");
         tabName.textContent = this.name;
-        
         this.#createList()
     }
+    
 
-    #refreshTodos(){
-        clearContent();
-        this.#createList()
-    }
+    //Creates a list repersenting this project
+    #createList(){
+        const list = createProjectList(this.name, this.color, this.todos);
+        contentContainer.appendChild(list);
+        addProjectListEvents(list, () => this.#deleteProject(), () => this.#editProjectModal());
 
-    #refreshTaskCounter(){
-        const taskCounter = this.tab.querySelector(".task-counter");
-        taskCounter.textContent = `${this.todos.length}`;
+        this.todos.forEach(todo => todo.create())
     };
-
-  
-   
+    
+    
     constructor(name, color){
         
         this.name = name;
@@ -108,15 +80,6 @@ export default class Project{
         this.todos = [];
         this.tab = ""
         
-        this.add = (TodoItem) => {
-            this.todos.push(TodoItem);
-        } ;
-        
-        this.remove = (TodoItem) => {
-            if(TodoItem){
-                this.todos.splice((this.todos.indexOf(TodoItem)), 1);
-            }
-        };
         
         this.create = () => {
             const tab = createProjectTab(this.name, this.color);
@@ -126,11 +89,17 @@ export default class Project{
         };
     };
     
-       static createProject(projectName, color){
+    static createProject(projectName, color){
         const newProject = new Project(projectName, color);
         newProject.create()
     }
     
+    static showProjectModal(){
+        const modal = createProjectModal();
+        contentContainer.appendChild(modal);
+        modal.showModal()
+        projectModalEvents(modal);
+    };
 }
 
 
