@@ -1,9 +1,9 @@
 
 import createProjectList from "./elements/createProjectList.js";
-import createProjectTab from "./elements/createProjectTab.js";
+import createProject from "./elements/createProject.js";
 import addProjectListEvents from "./events/addProjectListEvents.js";
 import clearContent from "../../clearContent.js";
-import addProjectTabEvents from "./events/addProjectTabEvents.js";
+import addProjectEvents from "./events/addProjectEvents.js";
 import "./project.css"
 
 import createProjectModal from "./elements/createProjectModal.js";
@@ -82,10 +82,10 @@ export default class Project{
         
         
         this.render = () => {
-            const tab = createProjectTab(this.name, this.color);
+            const tab = createProject(this.name, this.color);
             projectDropdown.appendChild(tab);
             this.tab = tab;
-            addProjectTabEvents(tab, () => this.#renderList());
+            addProjectEvents(tab, () => this.#renderList());
             this.#renderList()
         };
     };

@@ -56,6 +56,16 @@ body{
     position: relative;
 }
 
+.dropdown{
+    display: none;
+}
+
+.dropdown.active{
+    display: flex;
+    width: 100%;
+}
+
+
 
 
 /* COLORS */

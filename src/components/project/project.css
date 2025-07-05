@@ -4,16 +4,17 @@
 /* PROJECT TAB */
 
 
-.project-tab{
+.project{
     padding: 8px 16px;
     font-size: 0.9rem;
     font-weight: 500;
-     text-shadow: 1px 1px 3px black;
+    text-shadow: 1px 1px 3px black;
+    width: 100%;
    
 }
 
 
-.project-tab-name{
+.project-name{
     margin: 0;
   
 }

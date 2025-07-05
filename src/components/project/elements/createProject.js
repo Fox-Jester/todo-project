@@ -5,9 +5,9 @@ import constructElement from "../../../constructElement";
 export default function createProjectTab(name, color){
 
 
-    const projectTab = constructElement("div", "project-tab", "tab", color);
+    const projectTab = constructElement("div", "project", "tab", color);
 
-   const projectName = constructElement("p", "project-tab-name");
+   const projectName = constructElement("p", "project-name");
    projectName.textContent = name
 
 
