@@ -1,5 +1,5 @@
 
-import Project from "./components/project/project";
+import Project from "./components/project/Project";
 
 
 

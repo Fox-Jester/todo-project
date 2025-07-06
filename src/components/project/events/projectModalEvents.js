@@ -1,4 +1,5 @@
-import Project from "../../project/project.js";
+import projectArray from "../../project-array/project-array.js";
+import Project from "../Project.js";
 
 
 
@@ -59,7 +60,8 @@ export default function projectModalEvents(modal, editProject){
             }
             else{
                 const newProject = new Project(modalInput.value, color);
-                newProject.render()
+                newProject.render();
+                projectArray.push(newProject);
             }
             modal.close();
             modalInput.value = "";

@@ -8,6 +8,7 @@ import "./project.css"
 
 import createProjectModal from "./elements/createProjectModal.js";
 import projectModalEvents from "./events/projectModalEvents.js";
+import projectArray from "../project-array/project-array.js";
 
 
 const projectDropdown = document.querySelector("#project-dropdown");
@@ -22,6 +23,7 @@ export default class Project{
     #deleteProject(){
         clearContent()
         this.tab.remove()
+        projectArray.remove(this);
     };
     
     
@@ -29,12 +31,15 @@ export default class Project{
     //Refreshes taskcounter when a todo is added or deleted
     #refreshTaskCounter(){
         const taskCounter = this.tab.querySelector(".task-counter");
-        taskCounter.textContent = `${this.todos.length}`;
+        const content = (this.todos.length > 0 ? this.todos.length: "")
+        taskCounter.textContent = `${content}`;
     };
     //Visually refreshes the project when a todo is added or removed.
     refreshTodos(){
         this.#renderList();
         this.#refreshTaskCounter();
+        projectArray.save()
+     
     }
     
     
@@ -56,9 +61,10 @@ export default class Project{
     #refreshProject(){
         clearContent()
         this.tab.classList.replace(this.tab.classList[2], this.color);
-        const tabName = this.tab.querySelector(".project-tab-name");
+        const tabName = this.tab.querySelector(".project-name");
         tabName.textContent = this.name;
-        this.#renderList()
+        this.#renderList();
+        projectArray.save();
     }
     
 
@@ -87,6 +93,7 @@ export default class Project{
             this.tab = tab;
             addProjectEvents(tab, () => this.#renderList());
             this.#renderList()
+            this.#refreshTaskCounter()
         };
     };
     

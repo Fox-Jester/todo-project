@@ -1,23 +1,4 @@
 
 
-todo requirements-
-    title,
-    description,
-    dueDate,
-    priority
 
-ui requirements-
-    default project,
-
-Mechanics-
-    
-    
-   
-
-    hover over and click project tabs to edit or delete
-
-Special Mechanics- 
-    rightclick menu on todos,
-
-
-MAYBE REMODEL THE MODAL CLASS INTO DIFFERNET FUNCTIONS.
+on delete and page init view the all tab by defualt if you have pre existing projects

@@ -1,6 +1,7 @@
-import createTodoElement from "./elements/createTodoElement";
+import projectArray from "../project-array/project-array.js";
+import createTodoElement from "./elements/createTodoElement.js";
 import createTodoModal from "./elements/createTodoModal.js"
-import addTodoEvents from "./events/addTodoEvents";
+import addTodoEvents from "./events/addTodoEvents.js";
 import todoModalEvents from "./events/todoModalEvemts.js"
 
 import "./todo.css"
