@@ -1,4 +1,4 @@
-import constructElement from "../../../constructElement"
+import constructElement from "../../../helper-functions/constructElement"
 
 
 export default function createProjectModal(projectName = "", color = "red"){

@@ -1,5 +1,6 @@
-import projectArray from "../components/project-array/project-array";
-import isToday from "../isToday";
+import projectArray from "../components/data-storage/data-storage";
+import isPastDue from "../helper-functions/isPastDue";
+import isToday from "../helper-functions/isToday";
 import renderListHeader from "./elements/renderListHeader"
 import listHeaderEvents from "./events/listHeaderEvents";
 
@@ -12,27 +13,33 @@ const list = {
     renderAll(){
         this.renderHeader("All");
 
-        const todosArray = projectArray.getTodoList()
+        const todosArray = projectArray.getTodoList();
      
-        const allTodos = todosArray.flat()
-     
-        this.renderBody(allTodos, "all")
+        const allTodos = todosArray.flat();
+        this.renderBody(allTodos, "all");
     },
 
     renderToday(){
-         this.renderHeader("Today");
+        this.renderHeader("Today");
 
-        const todosArray = projectArray.getTodoList()
+        const todosArray = projectArray.getTodoList();
      
         const allTodos = todosArray.flat();
-        const todayTodos = allTodos.filter(todo => isToday(todo.date))
+        const todayTodos = allTodos.filter(todo => isToday(todo.date));
      
-        this.renderBody(todayTodos, "today")
+        this.renderBody(todayTodos, "today");
 
     },
 
     renderOverdue(){
+        this.renderHeader("Overdue");
 
+        const todosArray = projectArray.getTodoList();
+     
+        const allTodos = todosArray.flat();
+        const todayTodos = allTodos.filter(todo => isPastDue(todo.date, todo.time));
+     
+        this.renderBody(todayTodos, "overdue");
     },
 
     rendereOverdue(){},

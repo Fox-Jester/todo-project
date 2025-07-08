@@ -6,7 +6,7 @@ import "./project.css"
 
 import createProjectModal from "./elements/createProjectModal.js";
 import projectModalEvents from "./events/projectModalEvents.js";
-import projectArray from "../project-array/project-array.js";
+import dataStorage from "../data-storage/data-storage.js";
 
 import list from "../../list/list.js";
 
@@ -22,7 +22,7 @@ export default class Project{
     deleteProject(){
         list.renderAll()
         this.tab.remove()
-        projectArray.remove(this);
+        dataStorage.remove(this);
     };
     
     
@@ -37,7 +37,7 @@ export default class Project{
     refreshTodos(){
         console.log("check 1", this.todos)
         this.#refreshTaskCounter();
-        projectArray.save()
+        dataStorage.save()
         
     }
     
@@ -63,7 +63,7 @@ export default class Project{
         const tabName = this.tab.querySelector(".project-name");
         tabName.textContent = this.name;
         list.projectRender(this);
-        projectArray.save();
+        dataStorage.save();
     }
     
 

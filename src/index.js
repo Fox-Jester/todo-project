@@ -1,8 +1,9 @@
 
 import applyPageEvents from "./applyPageEvents";
-import projectArray from "./components/project-array/project-array.js";
+import projectArray from "./components/data-storage/data-storage.js";
 
 import Project from "./components/project/Project.js";
+import list from "./list/list.js";
 import "./styles.css";
 
 
@@ -14,6 +15,7 @@ const App = {
         applyPageEvents();
         projectArray.load()
         this.checkProjects()
+        list.renderAll()
 
     },
 

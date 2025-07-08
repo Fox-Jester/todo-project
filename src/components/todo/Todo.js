@@ -1,5 +1,5 @@
 import list from "../../list/list.js";
-import projectArray from "../project-array/project-array.js";
+
 import createTodoElement from "./elements/createTodoElement.js";
 import createTodoModal from "./elements/createTodoModal.js"
 import addTodoEvents from "./events/addTodoEvents.js";

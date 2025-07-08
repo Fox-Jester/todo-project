@@ -1,21 +1,21 @@
 import Project from "../project/Project.js"
-import Todo from "../todo/Todo"
+import Todo from "../todo/Todo.js"
 
 
-const projectArray = (() => {
+const dataStorage = (() => {
 
-    const projectList = [];
-    const todosList = []
+    const projectArray = [];
+    const todosArray = []
     
     
-    function reCreateProjects(projectListData, todosListData){
-        projectListData.forEach((projectdata, index) => {
+    function reCreateProjects(projectArrayData, todosArrayData){
+        projectArrayData.forEach((projectdata, index) => {
             const project = new Project(projectdata.name, projectdata.color);
         
             
-            if(todosListData[index]){
+            if(todosArrayData[index]){
 
-                const todos = todosListData[index].map(todoData => {
+                const todos = todosArrayData[index].map(todoData => {
                     const {title, description, date, time, priority} = todoData;
                     const todo = new Todo(title, description, date, time, priority, project);
                     return todo;
@@ -23,7 +23,7 @@ const projectArray = (() => {
     
                 project.todos = todos;
             }
-            projectList.push(project);
+            projectArray.push(project);
             project.render();
            
         });
@@ -34,37 +34,37 @@ const projectArray = (() => {
     return {
                
         getTodoList(){
-            return todosList
+            return todosArray
         },
 
         save(){
           
-            projectList.forEach((project, index)  => {
+            projectArray.forEach((project, index)  => {
                 const todos = project.todos
-                todosList[index] = todos;
+                todosArray[index] = todos;
                 project.todos = [];
             })
-            localStorage.setItem("projectArrayData", (JSON.stringify(projectList)));
-            localStorage.setItem("todosArrayData", (JSON.stringify(todosList)));
+            localStorage.setItem("projectArrayData", (JSON.stringify(projectArray)));
+            localStorage.setItem("todosArrayData", (JSON.stringify(todosArray)));
 
-            todosList.forEach((todos, index) => {
-                (projectList[index]).todos = todos
+            todosArray.forEach((todos, index) => {
+                (projectArray[index]).todos = todos
             })
 
         },
         
         remove(project){
-            const index = projectList.indexOf(project);
-            projectList.splice(index, 1);
-            todosList.splice(index, 1);
+            const index = projectArray.indexOf(project);
+            projectArray.splice(index, 1);
+            todosArray.splice(index, 1);
             this.save();
         },
         
         push(project){
             const todos = project.todos;
-            todosList.push(todos);
+            todosArray.push(todos);
             project.todos = []
-            projectList.push(project);
+            projectArray.push(project);
             this.save();
         },
         
@@ -81,4 +81,4 @@ const projectArray = (() => {
 })();
 
 
-export default projectArray
+export default dataStorage
