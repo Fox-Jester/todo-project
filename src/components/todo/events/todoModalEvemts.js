@@ -20,7 +20,18 @@ export default function todoModalEvents(modal, project, editTodo){
     const cancelBtn = modal.querySelector(".cancel-btn");
 
    
+    function getDate(){
+        const input = dateInput.value
+        if(input){
+            const split = input.split("-");
+            const year = split.splice(0, 1);
+                split.push(year);
+            const date = split.join("-");
 
+            return date
+
+        }
+    }
 
     function cancelTask(){
    
@@ -35,7 +46,7 @@ export default function todoModalEvents(modal, project, editTodo){
     const newTodo = new Todo(
         modalInput.value,
         descriptionArea.value,
-        dateInput.value,
+        getDate(),
         timeInput.value,
         prioritySelect.value,
         project

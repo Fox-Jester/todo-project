@@ -26,19 +26,19 @@ const projectArray = (() => {
             projectList.push(project);
             project.render();
            
-        })
+        });
+        
     }
     
     
     return {
-        
-       
-        ///create a way to save when todos update.
-        ///calling save doesn't split the todos, so it calls circular error
-
-        
+               
+        getTodoList(){
+            return todosList
+        },
 
         save(){
+          
             projectList.forEach((project, index)  => {
                 const todos = project.todos
                 todosList[index] = todos;
@@ -70,8 +70,8 @@ const projectArray = (() => {
         
         load(){
             if(localStorage.getItem("projectArrayData")){
-               
                 reCreateProjects(JSON.parse(localStorage.getItem("projectArrayData")), JSON.parse(localStorage.getItem("todosArrayData")));
+                this.save()
             }
         },
 

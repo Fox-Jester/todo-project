@@ -1,5 +1,7 @@
 
+
 import Project from "./components/project/Project";
+import list from "./list/list";
 
 
 
@@ -18,6 +20,11 @@ export default function applyPageListeners(){
 
     const upcomingTab = document.querySelector("#upcoming-tab");
 
+    const allTab = document.querySelector("#all-tab");
+    const todayTab = document.querySelector("#today-tab");
+    const overdueTab = document.querySelector("#overdue-tab");
+
+
 
     function projectDropdownToggle(){
         projectDropdown.classList.toggle("active");
@@ -25,9 +32,14 @@ export default function applyPageListeners(){
 
     }
 
-    projectTab.addEventListener("click", () => projectDropdownToggle())
+    allTab.addEventListener("click", () => list.renderAll());
+    todayTab.addEventListener("click", () => list.renderToday());
+    overdueTab.addEventListener("click", () => list.renderOverdue());
 
-    createProjectBtn.addEventListener("click", () => Project.showProjectModal())
+
+    projectTab.addEventListener("click", () => projectDropdownToggle());
+
+    createProjectBtn.addEventListener("click", () => Project.showProjectModal());
 
 
 

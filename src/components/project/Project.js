@@ -1,15 +1,14 @@
 
-import createProjectList from "./elements/createProjectList.js";
 import createProject from "./elements/createProject.js";
-import addProjectListEvents from "./events/addProjectListEvents.js";
-import clearContent from "../../clearContent.js";
-import addProjectEvents from "./events/addProjectEvents.js";
+
+
 import "./project.css"
 
 import createProjectModal from "./elements/createProjectModal.js";
 import projectModalEvents from "./events/projectModalEvents.js";
 import projectArray from "../project-array/project-array.js";
 
+import list from "../../list/list.js";
 
 const projectDropdown = document.querySelector("#project-dropdown");
 const contentContainer = document.querySelector("#content-container");
@@ -20,8 +19,8 @@ export default class Project{
     
     
     //Deletes this Project
-    #deleteProject(){
-        clearContent()
+    deleteProject(){
+        list.renderAll()
         this.tab.remove()
         projectArray.remove(this);
     };
@@ -34,49 +33,40 @@ export default class Project{
         const content = (this.todos.length > 0 ? this.todos.length: "")
         taskCounter.textContent = `${content}`;
     };
-    //Visually refreshes the project when a todo is added or removed.
+    //Refreshes the project when a todo is added or removed.
     refreshTodos(){
-        this.#renderList();
+        console.log("check 1", this.todos)
         this.#refreshTaskCounter();
         projectArray.save()
-     
+        
     }
     
     
     //Creates a modal to edit this project
-    #editProjectModal(){
+    editProjectModal(){
         const modal = createProjectModal(this.name, this.color);
         contentContainer.appendChild(modal);
         modal.showModal()
-        projectModalEvents(modal, (name, color) => this.#onProjectEdit(name, color));
+        projectModalEvents(modal, (name, color) => this.#projectEdit(name, color));
     };
     
     //Callback sent to a modal to edit this project
-    #onProjectEdit(name, color){
+    #projectEdit(name, color){
         this.name = name;
         this.color = color;
-        this.#refreshProject()
+        this.#onEdit()
     }
+
     //Refreashes this project when edited
-    #refreshProject(){
-        clearContent()
+    #onEdit(){
         this.tab.classList.replace(this.tab.classList[2], this.color);
         const tabName = this.tab.querySelector(".project-name");
         tabName.textContent = this.name;
-        this.#renderList();
+        list.projectRender(this);
         projectArray.save();
     }
     
 
-    //Creates a list repersenting this project
-    #renderList(){
-        clearContent();
-        const list = createProjectList(this.name, this.color, this.todos);
-        contentContainer.appendChild(list);
-        addProjectListEvents(list, () => this.#deleteProject(), () => this.#editProjectModal(), this);
-
-        this.todos.forEach(todo => todo.render())
-    };
     
     
     constructor(name, color){
@@ -91,8 +81,8 @@ export default class Project{
             const tab = createProject(this.name, this.color);
             projectDropdown.appendChild(tab);
             this.tab = tab;
-            addProjectEvents(tab, () => this.#renderList());
-            this.#renderList()
+            this.tab.addEventListener("click", () => list.projectRender(this));
+            list.projectRender(this);
             this.#refreshTaskCounter()
         };
     };

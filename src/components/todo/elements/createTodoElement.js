@@ -40,7 +40,7 @@ export default function createTodoElement(title, description, date, time, priori
 
     function getDate(){
     if (!date) return "";
-    const [year, month, day] = date.split("-").map(Number);
+    const [month, day, year] = date.split("-").map(Number);
     const inputDate = new Date(year, month - 1, day);
 
     const today = new Date();
@@ -48,10 +48,10 @@ export default function createTodoElement(title, description, date, time, priori
     tomorrow.setDate(today.getDate() + 1);
 
   
-    const isSameDay = (d1, d2) =>
-        d1.getFullYear() === d2.getFullYear() &&
-        d1.getMonth() === d2.getMonth() &&
-        d1.getDate() === d2.getDate();
+    const isSameDay = (date1, date2) =>
+        date1.getFullYear() === date2.getFullYear() &&
+        date1.getMonth() === date2.getMonth() &&
+        date1.getDate() === date2.getDate();
 
     if (isSameDay(inputDate, today)) {
         return "today";
