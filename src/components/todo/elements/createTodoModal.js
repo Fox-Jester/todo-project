@@ -13,10 +13,12 @@ export default function createTodoModal(todo){
     modalInput.autocomplete = "off"
     modalInput.placeholder = "Task"
     modalInput.required = true;
+    modalInput.maxLength = 45;
 
     const descriptionArea = constructElement("textarea", "description-area");
     descriptionArea.autocomplete = "off"
-    descriptionArea.placeholder = "Description"
+    descriptionArea.placeholder = "Description";
+    descriptionArea.maxLength = 80;
 
     const optionalContainer = constructElement("div", "optional-container");
 

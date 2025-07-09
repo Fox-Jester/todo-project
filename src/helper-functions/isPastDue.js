@@ -4,6 +4,13 @@ import isToday from "./isToday";
 
 export default function isPastDue(dateString, time){
 
+    if(!((dateString) && (time))){
+        return false
+    }
+
+    if(!(dateString)){
+        return checkTime()
+    }
 
     const [month, day, year] = dateString.split("-").map(Number);
 
@@ -12,14 +19,20 @@ export default function isPastDue(dateString, time){
 
     function checkTime(){
       
-        const newTimeString = time.replace("pm", "");
-        const splitTime = newTimeString.split(":");
         let hour
-        const min = parseInt(splitTime[1]);
-
-       
-
+        let min 
+        
+        function splitString(timeString){
+            
+            return (timeString.split(":"));
+        }
+        
+        
+        
         if(time.slice(-2) === "pm"){
+            const trimmed = time.replace("pm", "");
+            const splitTime = splitString(trimmed);
+            min = parseInt(splitTime[1]);
 
             if(splitTime[0] !== "12"){
                 hour = (parseInt(splitTime[0]) + 12);
@@ -28,6 +41,9 @@ export default function isPastDue(dateString, time){
             else{ hour = 12}
         }
         else {
+            const trimmed = time.replace("am", "");
+            const splitTime = splitString(trimmed);
+            min = parseInt(splitTime[1]);
             if(splitTime[0] === "12"){
                 hour = 0
             }

@@ -2,9 +2,12 @@
 
 
 
+media queries 
 
+add character limit
 
-#todoEvents-
+animate color grid
 
+add readme
 
-    che
+Faviconj

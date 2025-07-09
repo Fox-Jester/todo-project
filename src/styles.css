@@ -11,6 +11,7 @@ body{
 
 #page{
     display: flex;
+    height: 100vh;
 }
 
 #control-panel{
@@ -21,11 +22,26 @@ body{
     width: 350px;
     height: 100vh;
     color: hsl(0, 0%, 95%);
+    transition: all 0.3s;
 }
 
 
 #control-panel.hidden{
-    display: none;
+    width: 0;
+}
+
+#control-panel-toggle{
+    position: absolute;
+    right: 10px;
+    z-index: 3;
+    transition: all 0.3s;
+
+}
+
+#control-panel.hidden #control-panel-toggle{
+    right: -60px;
+    top: 25px;
+    
 }
 
 /* TABS */
@@ -51,9 +67,13 @@ body{
     cursor: pointer;
 }
 
+.tab:not(.project, .header):hover{
+    background-color: hsl(0, 0%, 45%);
+}
+
 .tab.header{
     justify-content: space-between;
-    padding: 12px;
+    padding: 8px;
     position: relative;
 }
 
@@ -128,15 +148,31 @@ body{
     cursor: pointer;
 }
 
+
 .icon-group p{
     font-size: 0.9rem;
 }
 
 .icon{
-    font-size: 2rem;
+    font-size: 1.6rem;
     cursor: pointer;
 }
 
+#create-project-btn{
+    border: 2px solid hsl(0, 0%, 85%);
+    box-shadow: 3px 3px 5px hsl(0, 0%, 15%);
+    padding: 0px 8px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+#create-project-btn .icon{
+    font-size: 1.2rem;
+}
+
+#create-project-btn:hover{
+    background-color: hsla(0, 0%, 75%, 0.173);
+}
 
 
 
@@ -175,7 +211,7 @@ body{
     border: none;
 
     box-shadow: 3px 3px 5px hsl(0, 0%, 25%);
-
+    overflow: hidden;
 }
 
 .project-modal-input{
@@ -242,20 +278,32 @@ body{
 
 
 .color-grid{
-    display: none;
-    
+    opacity: 0;
+    height: 0;
+    transition: all 0.3s;
+
    
-   
+}
+
+.color-grid div{
+    height: 0;
+    border: none;
+    transition: all 0.3s;
 }
 
 .color-grid.active{
     display: grid;
     position: fixed;
-    
     grid-template-columns: repeat(2, 35px);
+    height: auto;
+    opacity: 1;
 }
 
-.color-grid div{
+
+
+
+
+.color-grid.active div{
     border: 1px solid black;
     height: 20px;
 

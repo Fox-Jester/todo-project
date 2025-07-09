@@ -72,7 +72,6 @@ export default class Todo{
         this.listType = "project";
 
         this.render = (listType) => {
-            console.log(this.date)
             if(listType){
                 this.listType = listType;
             }

@@ -15,6 +15,7 @@ export default function createProjectModal(projectName = "", color = "red"){
     projectModalInput.placeholder = "Project name"
     projectModalInput.autocomplete = "off";
     projectModalInput.required = true;
+    projectModalInput.maxLength = 45
 
     const modalFooter = constructElement("div", "modal-footer");
     const colorContainer = constructElement("div", "color-container");
