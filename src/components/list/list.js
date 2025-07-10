@@ -6,6 +6,7 @@ import renderListHeader from "./elements/renderListHeader"
 import listHeaderEvents from "./events/listHeaderEvents";
 
 import "./list.css"
+import sortByDate from "../../helper-functions/sortByDate";
 
 const list = {
 
@@ -64,6 +65,7 @@ const list = {
     renderBody(todos, type){
         const listBody = document.querySelector("#list-body");
         listBody.innerHTML = ""
+        sortByDate(todos)
         todos.forEach(todo => todo.render(type));
         mobileSwapToggle();
     
