@@ -13,3 +13,5 @@ Todo app made for the Odin Project.
 \*Saves data via local storage.
 
 made with webpack.
+
+This is the [Site](https://fox-jester.github.io/todo-project/)
