@@ -11,3 +11,5 @@ Todo app made for the Odin Project.
 \*Sort by time and date.
 
 \*Saves data via local storage.
+
+made with webpack.
