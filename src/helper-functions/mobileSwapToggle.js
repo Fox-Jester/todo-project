@@ -1,10 +1,10 @@
 import toggleContolPanel from "./toggleControlPanel"
 
-
+const controlPanel = document.querySelector("#control-panel")
 
 export default function mobileSwapToggle(){
         if(screen.width <= 500){
-            console.log("wah")
+            if(!(controlPanel.classList.contains("hidden")))
             toggleContolPanel()
         }
     }
