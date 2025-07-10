@@ -346,7 +346,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ mobileSwapToggle)\n/* harmony export */ });\n/* harmony import */ var _toggleControlPanel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./toggleControlPanel */ \"./src/helper-functions/toggleControlPanel.js\");\n\r\n\r\n\r\n\r\nfunction mobileSwapToggle(){\r\n        if(screen.width <= 500){\r\n            console.log(\"wah\")\r\n            ;(0,_toggleControlPanel__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\r\n        }\r\n    }\n\n//# sourceURL=webpack://todo/./src/helper-functions/mobileSwapToggle.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ mobileSwapToggle)\n/* harmony export */ });\n/* harmony import */ var _toggleControlPanel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./toggleControlPanel */ \"./src/helper-functions/toggleControlPanel.js\");\n\r\n\r\nconst controlPanel = document.querySelector(\"#control-panel\")\r\n\r\nfunction mobileSwapToggle(){\r\n        if(screen.width <= 500){\r\n            if(!(controlPanel.classList.contains(\"hidden\")))\r\n            (0,_toggleControlPanel__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\r\n        }\r\n    }\n\n//# sourceURL=webpack://todo/./src/helper-functions/mobileSwapToggle.js?");
 
 /***/ }),
 
