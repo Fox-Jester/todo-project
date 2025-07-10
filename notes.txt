@@ -1,13 +1,7 @@
 
 
-
-
-media queries 
-
-add character limit
-
-animate color grid
-
 add readme
 
-Faviconj
+comment
+
+add function in 500px to switch when tab clicked

@@ -8,37 +8,37 @@
       src="https://kit.fontawesome.com/e186fe6458.js"
       crossorigin="anonymous"
     ></script>
-  <script defer src="main.js"></script></head>
+  <link rel="icon" href="favicon.png"><script defer src="main.js"></script></head>
   <body>
     <div id="page">
       <div id="control-panel">
         <div class="tab header">
           <div id="create-project-btn" class="icon-group">
-            <i class="fa-solid fa-circle-plus icon"></i>
+            <i class="fa-solid fa-plus icon"></i>
             <p>Create project</p>
           </div>
-        </div>
-        <div id="inbox-tab" class="tab">Inbox</div>
-        <div id="todo-dropdown" class="dropdown">
-          <div class="tab">
-            Tasks
-            <i class="fa-solid fa-chevron-right chevron"></i>
-          </div>
-          <div id="all-tab" class="tab">All</div>
-          <div id="today-tab" class="tab">Today</div>
-          <div id="upcoming-tab" class="tab">Upcoming</div>
-          <div id="over-due-tab" class="tab">Overdue</div>
+
+          <i id="control-panel-toggle" class="fa-solid fa-arrow-right icon"></i>
         </div>
 
-        <div id="project-dropdown" class="dropdown">
-          <div class="tab">
-            My Projects
-            <i class="fa-solid fa-chevron-right chevron"></i>
-          </div>
+        <div id="all-tab" class="tab">All</div>
+        <div id="today-tab" class="tab">Today</div>
+        <div id="overdue-tab" class="tab">Overdue</div>
+
+        <div id="project-tab" class="tab">
+          My Projects
+          <i class="fa-solid fa-chevron-right chevron rotate"></i>
         </div>
+        <div id="project-dropdown" class="dropdown active"></div>
       </div>
 
-      <div id="content-container"></div>
+      <div id="content-container">
+        <div id="list">
+          <div id="list-header"></div>
+          <div id="list-option-container"></div>
+          <div id="list-body"></div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

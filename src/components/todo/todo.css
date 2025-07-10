@@ -3,19 +3,135 @@
 
 .todo{
     display: flex;
-   
     padding: 16px 10px;
     gap: 10px;
     background-color: hsl(0, 0%, 20%);
     border-bottom: 1px solid hsl(0, 0%, 95%);
     color: hsl(0, 0%, 95%);
     position: relative;
-    width: 60%;
+    width: 1000px;
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
     flex-shrink: 0;
-  
+}
+
+@media screen and (max-width: 1550px){
+    .todo{
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 1450px){
+    .todo{
+        width: 800px;
+    }
+}
+
+@media screen and (max-width: 1250px){
+    .todo{
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 1250px){
+    .todo{
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    .todo{
+        width: 600px;
+    }
+
+    .todo-title{
+
+    font-size: 1rem;
+    }
+
+    .todo-description{
+    font-size: 0.9rem;
+    }
+
+    .todo p{
+    font-size: 0.9rem;
+    }
+
+    .check-toggle{
+    font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 950px){
+    .todo{
+        width: 500px;
+    }
+
+    .todo-title{
+
+    font-size: 1rem;
+    }
+
+    .todo-description{
+    font-size: 0.9rem;
+    }
+
+    .todo p{
+    font-size: 0.9rem;
+    }
+
+    .check-toggle{
+    font-size: 1.3rem;
+    }
+}
+
+
+@media screen and (max-width: 800px){
+    .todo{
+        width: 400px;
+    }
+
+    .todo-title{
+
+    font-size: 1rem;
+    }
+
+    .todo-description{
+    font-size: 0.9rem;
+    }
+
+    .todo p{
+    font-size: 0.9rem;
+    }
+
+    .check-toggle{
+    font-size: 1.3rem;
+    }
+}
+
+
+@media screen and (max-width: 700px){
+    .todo{
+        width: 80%;
+    }
+
+    .todo-title{
+
+    font-size: 1rem;
+    }
+
+    .todo-description{
+    font-size: 0.9rem;
+    }
+
+    .todo p{
+    font-size: 0.9rem;
+    }
+
+    .check-toggle{
+    font-size: 1.3rem;
+    }
 }
 
 .todo:hover{
@@ -30,7 +146,6 @@
     cursor: pointer;
 }
 
-.todo-content{}
 
 .todo-title{
     margin: 0;
@@ -38,12 +153,12 @@
 }
 
 .todo-description{
-         overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 2; /* number of lines to show */
-           line-clamp: 2;
-   -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .time-group{

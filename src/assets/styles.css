@@ -26,6 +26,7 @@ body{
 }
 
 
+
 #control-panel.hidden{
     width: 0;
 }
@@ -35,14 +36,64 @@ body{
     right: 10px;
     z-index: 3;
     transition: all 0.3s;
-
+    
 }
 
 #control-panel.hidden #control-panel-toggle{
-    right: -60px;
-    top: 25px;
+    right: -30px;
+    top: 15px;
     
 }
+
+@media screen and (max-width: 1250px){
+    #control-panel{
+        width: 300px;
+    }
+
+  
+}
+
+@media screen and (max-width: 900px){
+       #control-panel{
+        width: 250px;
+    }
+
+}   
+    
+@media screen and (max-width: 700px){
+       #control-panel{
+        width: 200px;
+    }
+
+}
+
+@media screen and (max-width: 600px){
+       #control-panel{
+        width: 180px;
+    }
+
+}
+
+@media screen and (max-width: 500px){
+       #control-panel{
+        width: 100vw;
+        }
+
+}
+
+@media screen and (max-width: 400px){
+    #control-panel-toggle{
+    font-size: 1.4rem;
+    }
+
+    #control-panel.hidden #control-panel-toggle{
+    right: -15px;
+    top: 15px;
+    
+    }
+    
+}
+
 
 /* TABS */
 
@@ -58,6 +109,12 @@ body{
     box-sizing: border-box;
 }
 
+@media screen and (max-width: 1050px){
+    .tab{
+    font-size: 0.9rem;
+}
+
+}
 
 .tab:last-child{
     border-bottom: 2px solid black;
@@ -81,6 +138,9 @@ body{
     height: 0%;
     background-color: hsla(0, 0%, 95%, 0.317);
     transition: height 0.5s;
+    overflow: hidden;
+    overflow-y: auto;
+    
     
 }
 
@@ -90,8 +150,9 @@ body{
 }
 
 .dropdown.active{
-    width: 100%;
+    
     height: 100%;
+    padding-bottom: 40px;
 }
 
 
@@ -159,19 +220,66 @@ body{
 }
 
 #create-project-btn{
+    display: flex;
+    align-items: center;
     border: 2px solid hsl(0, 0%, 85%);
     box-shadow: 3px 3px 5px hsl(0, 0%, 15%);
-    padding: 0px 8px;
+    padding: 8px;
     border-radius: 10px;
     flex-shrink: 0;
 }
 
+#create-project-btn p{
+margin: 0;
+}
 #create-project-btn .icon{
     font-size: 1.2rem;
 }
 
 #create-project-btn:hover{
     background-color: hsla(0, 0%, 75%, 0.173);
+}
+
+@media screen and (max-width:1050px){
+
+#create-project-btn p{
+    font-size: 0.9rem;
+}
+
+    #create-project-btn .icon{
+    font-size: 1rem;
+}
+}
+
+
+@media screen and (max-width:600px){
+    #create-project-btn{
+    padding: 6px;
+
+}
+
+#create-project-btn p{
+    font-size: 0.8rem;
+}
+
+    #create-project-btn .icon{
+    font-size: 0.9rem;
+}
+}
+
+@media screen and (max-width:500px){
+    #create-project-btn{
+    padding: 8px;
+
+}
+
+#create-project-btn p{
+    font-size: 0.9rem;
+}
+
+    #create-project-btn .icon{
+    font-size: 1rem;
+}
 }
 
 
@@ -198,6 +306,17 @@ body{
     width: 100%;
 }
 
+@media screen and (max-width: 500px){
+    #content-container{
+        overflow: hidden;
+        width: 0;
+    }
+    
+    #page:has(#control-panel.hidden) #content-container{
+        width: 100%;
+    }
+}
+
 /*Modal*/
 
 
@@ -214,6 +333,7 @@ body{
     overflow: hidden;
 }
 
+
 .project-modal-input{
     padding: 8px 12px;
     border: none;
@@ -221,7 +341,7 @@ body{
     background: none;
     font-size: 1.8rem;
     cursor: auto;
-   
+    
     color: hsl(0, 0%, 90%);
     text-shadow: 2px 2px 3px hsl(0, 0%, 15%);
     margin-bottom: 20px;
@@ -241,8 +361,8 @@ body{
 .color-container{
     cursor: pointer;
     position: relative;
-
-
+    
+    
 }
 .color-container:has(.color-grid.active) .color-group{
     box-shadow: none;
@@ -255,22 +375,22 @@ body{
     display: flex;
     align-items: center;
     position: relative;
-   
+    
     
 }
 
 
 .color-group .chevron{
     
-   
+    
     font-size: 1rem;
     margin-right: 8px;
-   
-   
+    
+    
 }
 
 .color-group p{
-
+    
     margin: 6px 5px 6px 8px;
     font-size: 1rem;
 }
@@ -281,8 +401,8 @@ body{
     opacity: 0;
     height: 0;
     transition: all 0.3s;
-
-   
+    
+    
 }
 
 .color-grid div{
@@ -299,19 +419,15 @@ body{
     opacity: 1;
 }
 
-
-
-
-
 .color-grid.active div{
     border: 1px solid black;
     height: 20px;
-
+    
 }
 
 .color-grid div.hidden{
-   display: none;
-
+    display: none;
+    
 }
 
 .btn-group{
@@ -336,6 +452,38 @@ body{
     
 }
 
+@media screen and (max-width: 500px){
+    .modal{
+
+    width: 300px;
+    }
+
+    .project-modal-input{
+    padding: 8px;
+
+    font-size: 1.5rem;
+
+    }
+
+    
+    .modal-footer{
+        padding: 8px 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .btn-group{
+    gap: 5px;
+    }
+
+.btn-group button{
+
+    font-size: 0.9rem;
+
+    }
+
+}
 /* TODO MODAL */
 
 .modal:has(.todo-form){

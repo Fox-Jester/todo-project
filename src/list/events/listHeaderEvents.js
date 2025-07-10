@@ -6,24 +6,25 @@ import Todo from "../../components/todo/Todo";
 export default function listHeaderEvents(project){
 
 
-    const listHeader = document.querySelector("#list-header");
+    const listOptionContainer = document.querySelector("#list-option-container");
 
-    const createBtn = listHeader.querySelector(".add-todo-btn")
-    const deleteBtn = listHeader.querySelector(".delete-btn");
-    const editBtn = listHeader.querySelector(".edit-btn");
+    const createBtn = listOptionContainer.querySelector(".add-todo-btn");
 
-    function onAddTask(){
-        Todo.showTodoModal(project);
-    }
+    const deleteBtn = listOptionContainer.querySelector(".delete-btn");
 
-    deleteBtn.addEventListener("click", () => {
+    const editBtn = listOptionContainer.querySelector(".edit-btn");
+
+
+    function handleDelete(){
         if(confirm("are you sure you want to delete this project?")){
             project.deleteProject();
         }
-      
-    });
+
+    }
+
+    deleteBtn.addEventListener("click",  handleDelete);
 
     editBtn.addEventListener("click", () => project.editProjectModal())
 
-    createBtn.addEventListener("click", () => onAddTask());
+    createBtn.addEventListener("click", () => Todo.showTodoModal(project));
 }

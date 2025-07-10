@@ -4,7 +4,7 @@ import projectArray from "./components/data-storage/data-storage.js";
 
 import Project from "./components/project/Project.js";
 import list from "./list/list.js";
-import "./styles.css";
+import "./assets/styles.css";
 
 
 
