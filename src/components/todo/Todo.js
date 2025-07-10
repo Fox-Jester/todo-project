@@ -1,4 +1,4 @@
-import list from "../../list/list.js";
+import list from "../../components/list/list.js"
 
 import createTodoElement from "./elements/createTodoElement.js";
 import createTodoModal from "./elements/createTodoModal.js"

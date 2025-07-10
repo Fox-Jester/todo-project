@@ -1,7 +1,3 @@
 
 
 add readme
-
-comment
-
-add function in 500px to switch when tab clicked

@@ -1,5 +1,5 @@
 
-
+//Checks if the date is today
 export default function isToday(dateString){
     if(!(dateString)){
         return false

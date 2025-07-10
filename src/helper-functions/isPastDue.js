@@ -2,6 +2,7 @@ import isToday from "./isToday";
 
 
 
+//checks if date/time is in the past
 export default function isPastDue(dateString, time){
 
     if(!((dateString) && (time))){

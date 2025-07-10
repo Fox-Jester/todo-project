@@ -8,7 +8,7 @@ import createProjectModal from "./elements/createProjectModal.js";
 import projectModalEvents from "./events/projectModalEvents.js";
 import dataStorage from "../data-storage/data-storage.js";
 
-import list from "../../list/list.js";
+import list from "../../components/list/list.js"
 
 const projectDropdown = document.querySelector("#project-dropdown");
 const contentContainer = document.querySelector("#content-container");
